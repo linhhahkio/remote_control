@@ -1,11 +1,32 @@
+var isFinnish = 0;
 var application_speech = function(){
+
+    $(".finnish").click(function() {
+        isFinnish = 1;
+    });
+
+    $(".english").click(function() {
+        isFinnish = 0;
+    });
+
     RobotUtils.onService(function(ALTextToSpeech) {
         // Bind button callbacks
+
         $(".talk").click(function() {
+          if(isFinnish == 1){
+              ALTextToSpeech.setLanguage("Finnish");
+          } else {
+            ALTextToSpeech.setLanguage("English");
+          }
             ALTextToSpeech.say($(this).html());
         });
 
         $(".inputTalk").click(function() {
+          if(isFinnish == 1){
+              ALTextToSpeech.setLanguage("Finnish");
+          } else {
+            ALTextToSpeech.setLanguage("English");
+          }
             ALTextToSpeech.say($("#sayThis").val());
         });
     });
@@ -60,11 +81,11 @@ var application_behavior = function(){
     RobotUtils.onService(function(ALDialog) {
         // Bind button callbacks
         $(".start").click(function() {
-            ALDialog.setLanguage("Finnish")
+            ALDialog.setLanguage("Finnish");
         });
 
         $(".stop").click(function() {
-            ALDialog.setLanguage("English")
+            ALDialog.setLanguage("English");
         });
     });
 
@@ -86,4 +107,25 @@ var application_behavior = function(){
             ALTabletService.hideWebview();
         });
     });
+}
+
+var application_volume = function(){
+    RobotUtils.onService(function(ALAudioDevice) {
+        // Bind button callbacks
+        // Set default volume
+        $('#volumeVal').html( $('#volume').val() * 100);
+        ALAudioDevice.setOutputVolume($('#volume').val() * 100);
+
+        // Change volume
+        $(document).on('input change', '#volume', function() {
+          $('#volumeVal').html( $(this).val() * 100);
+          ALAudioDevice.setOutputVolume($(this).val() * 100);
+      });
+
+    });
+}
+
+var application_language = function(){
+        // Bind button callbacks
+
 }

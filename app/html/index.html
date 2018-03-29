@@ -9,55 +9,78 @@
 </head>
 <body class="unselectable">
 
-    <div class="container-fluid">
-        <div class="row vertical-align">
-      		<div class="col-sm-6 col-sm-offset-2 text-center">
-              <input id = "sayThis" type="text" name="say this" placeholder="Input your text" class = "input-lg">
-          </div>
-          <div class="col-sm-6" id="buttonField">
-              <button class="inputTalk bigfriendlybutton">Say this</button>
-  		    </div>
-        </div>
+     <!-- Speech from input -->
+  <div class="container-fluid">
 
-  			<div class="row">
-          <div class="col-sm-3 text-center">
-              <h1>Speech</h1>
-              <button class="talk bigfriendlybutton">Hello</button>
-              <button class="talk bigfriendlybutton">Goodbye</button>
-          </div>
-          <div class="col-sm-2 text-center">
-              <h1>Animation</h1>
-              <button class="wave bigfriendlybutton roundButton">Wave</button>
-              <button class="bow bigfriendlybutton roundButton">Bow</button>
-          </div>
-          <div class="col-sm-3 text-center">
-              <h1>Sound</h1>
-              <button class="sound bigfriendlybutton ovalButton">Cry</button>
-              <button class="sound bigfriendlybutton ovalButton">Laugh</button>
-          </div>
-          <div class="col-sm-4 text-center">
-              <h1>Image</h1>
-            <div class="row">
-              <div class="col-md-6 text-center">
-                <button class="image bigfriendlybutton orangeButton">Laurea</button>
-                <button class="image bigfriendlybutton orangeButton">Gorilla</button>
-              </div>
-                <div class="col-md-6 text-center">
-                <button class="hideImage bigfriendlybutton redButton">Hide image</button>
+     <div class="row vertical-align">
+       <div class="col-sm-6 col-sm-offset-2 text-center">
+           <input id = "sayThis" type="text" name="say this" placeholder="Input your text" class = "input-lg">
+       </div>
+       <div class="col-sm-6" id="buttonField">
+           <button class="inputTalk bigfriendlybutton">Say this</button>
+       </div>
+     </div>
+
+     <!-- Set volume -->
+     <div class = "row">
+        <div class="col-sm-6 text-center">
+       Volume: <p id="volumeVal"> </p>
+        </div>
+        <div class="col-sm-6 col-sm-pull-2 text-center">
+          <input id="volume" type="range" min="0" max="1" value="0.2" step="0.1">
+        </div>
+      </div>
+
+      <!-- Set language -->
+      <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1> Set language </h1>
+            <button class="finnish imgButton" id ="fin"></button>
+            <button class="english imgButton" id = "en"></button>
+        </div>
+      </div>
+
+   <!-- Animation -->
+  		<div class="row">
+        <div class="col-sm-3 text-center">
+            <h1>Speech</h1>
+            <button class="talk bigfriendlybutton">Hello</button>
+            <button class="talk bigfriendlybutton">Goodbye</button>
+        </div>
+        <div class="col-sm-2 text-center">
+            <h1>Animation</h1>
+            <button class="wave bigfriendlybutton roundButton">Wave</button>
+            <button class="bow bigfriendlybutton roundButton">Bow</button>
+        </div>
+        <div class="col-sm-3 text-center">
+            <h1>Sound</h1>
+            <button class="sound bigfriendlybutton ovalButton">Cry</button>
+            <button class="sound bigfriendlybutton ovalButton">Laugh</button>
+        </div>
+        <div class="col-sm-4 text-center">
+            <h1>Image</h1>
+          <div class="row">
+            <div class="col-sm-6 text-center">
+              <button class="image bigfriendlybutton orangeButton">Laurea</button>
+              <button class="image bigfriendlybutton orangeButton">Gorilla</button>
+            </div>
+              <div class="col-sm-6 text-center">
+              <button class="hideImage bigfriendlybutton redButton">Hide image</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-sm-12 text-center">
-              <h1> Read news (Finnish) </h1>
-              <button class="start bigfriendlybutton">Start</button>
-              <button class="stop bigfriendlybutton redButton">Stop</button>
-          </div>
+   <!-- Behaviour -->
+      <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1> Read news (Finnish) </h1>
+            <button class="start bigfriendlybutton">Start</button>
+            <button class="stop bigfriendlybutton redButton">Stop</button>
         </div>
+      </div>
 
-  		</div>
+  	</div>
 
     <!-- qimessaging & jquery stuff -->
     <script src="js/jquery-1.11.0.min.js"></script>
@@ -66,11 +89,13 @@
     <!-- application script call -->
     <script type="text/javascript">
         $(document).ready(function(e){
-            var app = application_speech();
-	    var app2 = application_animation()
-      var app3 = application_sound();
-        var app4 = application_image();
-        var app5 = application_behavior();
+             var app = application_speech();
+	           var app2 = application_animation()
+             var app3 = application_sound();
+             var app4 = application_image();
+             var app5 = application_behavior();
+             var app6 = application_volume();
+             //var app7 = application_language();
         })
     </script>
 
