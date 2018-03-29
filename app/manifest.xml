@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.1" uuid="test_control">
+<package uuid="test_control" version="0.0.1">
  <names>
   <name lang="en_US">test_control</name>
   <name lang="fr_FR">servicedriven</name>

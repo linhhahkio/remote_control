@@ -1,4 +1,7 @@
+// Check if finnish is set
 var isFinnish = 0;
+
+// Make pepper speak
 var application_speech = function(){
 
     $(".finnish").click(function() {
@@ -32,6 +35,7 @@ var application_speech = function(){
     });
 }
 
+// Run animation
 var application_animation = function(){
     RobotUtils.onService(function(ALBehaviorManager) {
         // Bind button callbacks
@@ -46,6 +50,7 @@ var application_animation = function(){
     });
 }
 
+// Play sound
 var application_sound = function(){
     RobotUtils.onService(function(ALAudioPlayer) {
         // Bind button callbacks
@@ -60,6 +65,7 @@ var application_sound = function(){
     });
 }
 
+// Show image in Pepper tablet
 var application_image = function(){
     RobotUtils.onService(function(ALTabletService) {
         // Bind button callbacks
@@ -77,6 +83,7 @@ var application_image = function(){
     });
 }
 
+// Run behavior of an installed application
 var application_behavior = function(){
     RobotUtils.onService(function(ALDialog) {
         // Bind button callbacks
@@ -109,6 +116,7 @@ var application_behavior = function(){
     });
 }
 
+// Set the volume
 var application_volume = function(){
     RobotUtils.onService(function(ALAudioDevice) {
         // Bind button callbacks
@@ -125,7 +133,29 @@ var application_volume = function(){
     });
 }
 
-var application_language = function(){
-        // Bind button callbacks
+// Shutdown Pepper application
+var application_shutdown = function(){
 
+  $(".shutdown").click(function() {
+  if(confirm("Are you sure you want to shutdown?")){
+    rest(shutdown);
+  }
+});
+}
+
+// Shutdown Pepper function call when rest is done
+function shutdown() {
+  RobotUtils.onService(function(ALSystem) {
+      // Bind button callbacks
+          ALSystem.shutdown();
+  });
+}
+
+// Put pepper to safe position: rest
+function rest(callback) {
+  RobotUtils.onService(function(ALMotion) {
+      // Bind button callbacks
+          ALMotion.rest();
+  });
+  callback();
 }
