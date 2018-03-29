@@ -1,3 +1,9 @@
+/* This script is developed based on robotjumpstarter: https://github.com/pepperhacking/robot-jumpstarter
+ * The script has been changed to use qimessaging 2 instead of qimessassing 1.0 which is now deprecated.
+ * Original comment included below.
+ * Author: Linh Le
+ */
+
 /*
  * robotutils.qim1.js version 0.2
  *
@@ -54,19 +60,20 @@ RobotUtils = (function(self) {
             var i;
             for (i = 0; i < wantedServices.length; i++) {
                 (function (i){
-                    session.service(wantedServices[i]).done(function(service) {
+                    session.service(wantedServices[i]).then(function(service) {
                         services[i] = service;
                         pendingServices -= 1;
                         if (pendingServices == 0) {
                             servicesCallback.apply(undefined, services);
                         }
-                    }).fail(function() {
+                    },function() {
                         var reason = "Failed getting a NaoQi Module: " + wantedServices[i]
                         console.log(reason);
                         if (errorCallback) {
                             errorCallback(reason);
                         }
-                    });
+                    }
+                  );
                 })(i);
             }
         }, errorCallback);
@@ -139,10 +146,13 @@ RobotUtils = (function(self) {
             }
         }
 
-        getScript(robotlibs + 'qimessaging/1.0/qimessaging.js', function() {
-            self.session = new QiSession(qimAddress);
-            self.session.socket().on('connect', onConnected);
-            self.session.socket().on('disconnect', failureCallback);
+        getScript(robotlibs + 'qimessaging/2/qimessaging.js', function() {
+            self.session = new QiSession(function(session) {
+              onConnected();
+            }, failureCallback, qimAddress);
+            //self.session = new QiSession(qimAddress);
+            //self.session.socket().on('connect', onConnected);
+            //self.session.socket().on('disconnect', failureCallback);
         }, function() {
             if (self.robotIp) {
                 console.error("Failed to get qimessaging.js from robot: " + self.robotIp);

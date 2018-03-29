@@ -11,6 +11,8 @@
         <File name="main" src="html/js/main.js" />
         <File name="robotutils.qim1" src="html/js/robotutils.qim1.js" />
         <File name="Note" src="html/js/Note" />
+        <File name="en_flag" src="html/img/en_flag.png" />
+        <File name="fif_flag" src="html/img/fif_flag.png" />
     </Resources>
     <Topics />
     <IgnoredPaths />

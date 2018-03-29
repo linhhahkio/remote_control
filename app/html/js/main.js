@@ -138,7 +138,7 @@ var application_shutdown = function(){
 
   $(".shutdown").click(function() {
   if(confirm("Are you sure you want to shutdown?")){
-    rest(shutdown());
+    rest(shutdown);
   }
 });
 }
