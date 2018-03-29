@@ -6,6 +6,12 @@
     <link media="screen" href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- qimessaging & jquery stuff -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/robotutils.qim1.js"></script>
+    <script src="js/main.js"></script>
+
 </head>
 <body class="unselectable">
 
@@ -80,12 +86,17 @@
         </div>
       </div>
 
+      <!-- Shutdown -->
+         <div class="row">
+           <div class="col-sm-12 text-center">
+               <h1> Shutdown </h1>
+               <button class="shutdown bigfriendlybutton redButton">Shutdown</button>
+          </div>
+        </div>
+
+
   	</div>
 
-    <!-- qimessaging & jquery stuff -->
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/robotutils.qim1.js"></script>
-    <script src="js/main.js"></script>
     <!-- application script call -->
     <script type="text/javascript">
         $(document).ready(function(e){
@@ -95,7 +106,7 @@
              var app4 = application_image();
              var app5 = application_behavior();
              var app6 = application_volume();
-             //var app7 = application_language();
+             var app7 = application_shutdown();
         })
     </script>
 
