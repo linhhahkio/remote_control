@@ -1,0 +1,92 @@
+* {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body{
+margin: 0px;
+position:relative;
+bacinput {}kground-color: lightblue;
+}
+
+.row {
+  margin-top: 25px;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bigfriendlybutton {
+  border-radius: 25px;
+  display: inline-block;
+  width: 200px;
+  height: 70px;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 35px;
+  margin-bottom: 10px;
+
+}
+
+.ovalButton {
+  border-radius: 50%;
+  background-color: #4CAF50; /* Green */
+}
+
+.roundButton {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    border: 1px solid #000;
+    background-color: #9999ff; /* Violet */
+
+}
+
+
+.orangeButton {
+  background-color: #FFA500;
+}
+
+.redButton {
+  background-color: #E06666;
+}
+
+input{
+  width:100%;
+padding: 5px;
+border:1px solid black;
+-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+/* Extra small devices (767px and down) */
+@media (max-width: 767px) {
+    .vertical-align {
+        display: block; /* Turn off the flexible box layout */
+    }
+
+    #buttonField { text-align: center;}
+
+    .inputTalk { margin-top: 10px;}
+
+    .roundButton {
+    width:50%;
+  }
+
+
+}
