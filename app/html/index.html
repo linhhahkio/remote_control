@@ -79,19 +79,29 @@
 
    <!-- Behaviour -->
       <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-6 text-center">
             <h1> Read news (Finnish) </h1>
             <button class="start bigfriendlybutton">Start</button>
             <button class="stop bigfriendlybutton redButton">Stop</button>
         </div>
+        <div class="col-sm-6 text-center">
+            <h1> Move straight </h1>
+            <button class="move bigfriendlybutton orangeButton" id ="short">0.2m</button>
+            <button class="move bigfriendlybutton orangeButton" id = "medium">0.5m</button>
+            <button class="move bigfriendlybutton orangeButton" id = "long">1m</button>
+       </div>
       </div>
 
       <!-- Shutdown -->
          <div class="row">
-           <div class="col-sm-12 text-center">
+           <div class="col-sm-6 text-center">
                <h1> Shutdown </h1>
                <button class="shutdown bigfriendlybutton redButton">Shutdown</button>
           </div>
+          <div class="col-sm-6 text-center">
+              <h1> Reboot </h1>
+              <button class="reboot bigfriendlybutton">Reboot</button>
+         </div>
         </div>
 
 
@@ -107,6 +117,7 @@
              var app5 = application_behavior();
              var app6 = application_volume();
              var app7 = application_shutdown();
+             var app8 = application_movement();
         })
     </script>
 
