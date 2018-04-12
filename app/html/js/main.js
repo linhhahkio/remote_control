@@ -135,10 +135,17 @@ var application_volume = function(){
 
 // Shutdown Pepper application
 var application_shutdown = function(){
-
+  // shutdown function
   $(".shutdown").click(function() {
-  if(confirm("Are you sure you want to shutdown?")){
+  if(confirm("Are you sure you want to shutdown Pepper?")){
     rest(shutdown);
+  }
+});
+
+  // reboot function
+  $(".reboot").click(function() {
+  if(confirm("Are you sure you want to reboot Pepper?")){
+    rest(reboot);
   }
 });
 }
@@ -151,6 +158,13 @@ function shutdown() {
   });
 }
 
+function reboot() {
+  RobotUtils.onService(function(ALSystem) {
+      // Bind button callbacks
+          ALSystem.reboot();
+  });
+}
+
 // Put pepper to safe position: rest
 function rest(callback) {
   RobotUtils.onService(function(ALMotion) {
@@ -158,4 +172,39 @@ function rest(callback) {
           ALMotion.rest();
   });
   callback();
+}
+
+//---------------------------
+// Move
+var application_movement = function(){
+        var x = 0.0;
+        var y = 0.0;
+        var theta = 0.0;
+        // Bind button callbacks
+
+        $(".move").click(function() {
+            var id = this.id;
+            if (id === "short") { x = 0.2; }
+            else if (id === "medium") { x = 0.5;}
+            else {x = 1.0}
+
+            goToPostureInit(moveTo, x, y, theta);
+        });
+}
+
+function moveTo(x, y, theta) {
+  RobotUtils.onService(function(ALMotion) {
+      // Bind button callbacks
+
+      ALMotion.moveTo(x, y, theta);
+  });
+}
+
+// Put pepper to safe position: standInit
+function goToPostureInit(callback) {
+  RobotUtils.onService(function(ALRobotPosture) {
+      // Bind button callbacks
+          ALRobotPosture.goToPosture("StandInit", 0.5);
+  });
+  callback(arguments[1], arguments[2], arguments[3] );
 }
